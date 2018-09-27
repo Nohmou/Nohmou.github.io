@@ -18,8 +18,8 @@
 	var dps = 0;
 	var stone = 0;				//temporarily adjusted for testing!
 	var crushers = 0;
-	var crusherDirtCost = 100;
-	var crusherStoneCost = 10;
+	var crusherDirtCost = 50;
+	var crusherStoneCost = 5;
 	var sps = 0;
 	var attack = 0;
 	var maxHealth = 5;
@@ -228,7 +228,7 @@
 		stone += (crushPower / 10);
 		stone = prettify(stone);
 		document.getElementById("currentStone").innerHTML = "Stone: " + stone;
-		if (stone >= 1 && attack == 0) {
+		if (stone >= 3 && attack == 0) {
 			document.getElementById("attack").style.display = "inline";
 			document.getElementById("craft").style.display = "inline";
 			if (messages == 3) displayMessage(3);
@@ -752,7 +752,20 @@
 		element.classList.add("current");		
 		document.getElementById("battleLog").style.display = "none";
 		document.getElementById("shopLog").style.display = "none";
-		document.getElementById("gameLog").style.display = "none";		
+		document.getElementById("gameLog").style.display = "none";
+	}
+	
+	function goVersion() {
+		//Changes the current screen variable to the Version Info Screen.
+		var element = document.getElementsByClassName("current");
+		element[0].style.display = "none";
+		element[0].classList.remove("current");
+		element = document.getElementById("versionScreen");
+		element.style.display = "inline";
+		element.classList.add("current");		
+		document.getElementById("battleLog").style.display = "none";
+		document.getElementById("shopLog").style.display = "none";
+		document.getElementById("gameLog").style.display = "none";
 	}
 	
 	//Saves the game variables into HTML5 local storage. Need to add all variables. 
