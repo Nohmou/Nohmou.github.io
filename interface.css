@@ -1,0 +1,282 @@
+/* #id
+	.class
+	
+*/
+
+body {
+	/*position: absolute;*/
+	background-color: grey;
+	width: 100%;
+	height: 100%;
+}
+
+#pauseText {
+	position: absolute;
+	background-color: yellow;
+	font-size: 48px;
+	top: 39%;
+	left: 23%;
+	padding: 5px;
+	z-index: 5;
+}
+
+button {
+	outline-style: none;
+	width: 150px;
+	border-radius: 12px;
+}
+
+/*div {
+	border: solid;
+	border-width: 1px;
+}*/
+
+#header {
+	position: fixed;
+	padding: 8px;
+	background-color: grey;
+	border: solid;
+	border-width: 1px;
+	z-index: 3;
+	width: 54%;
+}
+
+#menuButtons {
+	position: fixed;
+	right: 0px;
+	width: 43%;
+	height: 11.5%;
+	border: solid;
+	border-width: 1px;
+}
+
+.menuButton {
+	background-color: white;
+	border-color: white;
+}
+
+.divider {
+	display: block;
+	height: 2px;
+}
+
+.screen {
+	position: absolute;
+	border: solid;
+	border-width: 0px;
+	top: 13%;
+	width: 72%;
+	height: 82%;
+}
+
+#buyButtons {
+	position: absolute;
+	text-align: center;
+	top: 0%;
+	left: 83.1%;
+	background-color: orange;
+	padding-top: 2px;
+	padding-bottom: 5px;
+	padding-left: 2px;
+	padding-right: 1px;
+	height: 97.6%;
+	width: 16.5%;
+	z-index: 2;
+}
+
+.log {
+	position: absolute;
+	top: 13%;
+	left: 72.5%;
+	padding-bottom: 7px;
+	height: 80%;
+	background-color: white;
+	width: 27.5%;
+}
+
+.logP {
+	padding-left: 5px;
+	padding-bottom: 10px;
+	overflow-y: scroll;
+	max-height: 96%;
+}
+
+#bottom {
+	position: absolute;
+	border: solid;
+	border-width: 1px;
+	bottom: 1%;
+	width: 99%;
+}
+
+.petButton {
+	position: relative;
+	left: 1%;
+	background-color: DodgerBlue;
+	border-color: DodgerBlue;
+	width: 11vw;
+}
+
+.hidden {
+	display: none;
+}
+
+.dirt {
+	background-color: #CC0000;
+	outline-style: none;
+	position: absolute;
+	z-index: 1;
+	width: 27.25%;
+	height: 44.5%;
+}
+
+#dirt1 {
+	top: 5%;
+	left: 15%;
+}
+
+#dirt2 {
+	top: 5%;
+	left: 42.25%;
+}
+
+#dirt3 {
+	top: 49.5%;
+	left: 15%;
+}
+
+#dirt4 {
+	top: 49.5%;
+	left: 42.25%;
+}
+
+#buy2 {
+	top: 5%;
+	left: 42.25%;
+}
+
+#buy3 {
+	top: 49.5%;
+	left: 15%;
+}
+
+#buy4 {
+	top: 49.5%;
+	left: 42.25%;
+}
+
+.gem {
+	outline-style: none;
+	position: absolute;
+	z-index: 2;
+	width: 27.25%;
+	height: 44.5%;
+}
+
+#minigem {
+	width: 16px;
+	height: 16px;
+	padding-top: 1px;
+}
+
+#gem1 {
+	top: 5%;
+	left: 15%;
+}
+
+#gem2 {
+	top: 5%;
+	left: 42.25%;
+}
+
+#gem3 {
+	top: 49.5%;
+	left: 15%;
+}
+
+#gem4 {
+	top: 49.5%;
+	left: 42.25%;
+}
+
+.tooltip {
+	position: relative;
+	display: inline-block;
+}
+
+.tooltip .tooltiptext {
+	visibility: hidden;
+	background-color: black;
+	color: #fff;
+	width: 150px;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px;
+	top: -20px;
+	right: 110%;
+	
+	position: absolute;
+	z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+}
+
+#craftButtons {
+	position: absolute;
+	top: 10%;
+}
+
+#startBattle {
+	position: absolute;
+	height: 200px;
+	width: 200px;
+	top: 100px;
+	left: 200px;
+}
+
+.enemy {
+	position: absolute;
+	outline-style: none;
+	top: 10%;
+	z-index: 3;
+}
+
+#enemy1 {
+	left: 15%;
+}
+
+#enemy2 {
+	left: 30%;
+}
+
+#enemy3 {
+	left: 45%;
+}
+
+#enemy4 {
+	left: 60%;
+}
+
+#attackButton {
+	position: absolute;
+	top: 350px;
+	left: 225px;
+	height: 75px;
+}
+
+#autoFight {
+	position: absolute;
+	top: 315px;
+	left: 225px;
+}
+
+#shopButtons {
+	position: absolute;
+	top: 10%;
+}
+
+#forestScreen {
+	background-color: green;
+}

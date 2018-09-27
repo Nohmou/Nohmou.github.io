@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pay Dirt</title>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="main.js"></script>
+		<link rel="stylesheet" type="text/css" href="interface.css" />
+
+	</head>
+	
+	<body>
+		<span class="hidden" id="pauseText">PAUSED</span>
+		<div id="header">
+			Dirt: <span id="currentDirt">0</span>
+			Dirt per second: <span id="dps">0</span>
+			Dirt per click: <span id="dpc">1</span><br>
+			<span class="hidden" id="currentStone">Stone: 0</span>
+			<span class="hidden" id="sps">Stone per second: 0<br></span>
+			Gems: <span id="currentGems">0</span>
+			<input class="hidden gem" type="image" src="Images/TempGem.png" id="minigem" />
+			<span class="hidden" id="attack"><br>Attack: 0</span>
+			<span class="hidden" id="healthText">Health: </span>
+			<span class="hidden" id="health">5</span>
+			<span class="hidden" id="battlesWon">Battles Won: 0</span>
+		</div>
+		
+		<div id="menuButtons">
+			<button class="menuButton" id="mine" onclick="goMine()">Mine</button>
+			<button class="menuButton hidden" id="craft" onclick="goCraft()">Craft</button>
+			<button class="menuButton hidden" id="battle" onclick="goBattle()">Battle</button><br>
+			<div class="divider" id="divider1">
+			</div>
+			<button class="menuButton hidden" id="shop" onclick="goShop()">Shop</button>
+			<button class="menuButton hidden" id="forest" onclick="goForest()">Forest</button>
+			<br>
+			<div class="divider" id="divider2">
+			</div>
+		</div>
+		
+		<div id="mainScreen" class="screen current">
+			
+			<div id="mineArea">
+				<canvas class="dirt" id="dirt1" style="border:1px solid #000000;" onclick="mine(1, true, 0)">Canvas</canvas>
+				<input class="hidden gem" type="image" src="Images/TempGem.png" id="gem1" onclick="mine(1, true, 0)" />
+				<canvas class="hidden dirt" id="dirt2" style="border:1px solid #000000;" onclick="mine(1, true, 1)">Canvas</canvas>
+				<input class="hidden gem" type="image" src="Images/TempGem.png" id="gem2" onclick="mine(1, true, 1)" />
+				<canvas class="hidden dirt" id="dirt3" style="border:1px solid #000000;" onclick="mine(1, true, 2)">Canvas</canvas>
+				<input class="hidden gem" type="image" src="Images/TempGem.png" id="gem3" onclick="mine(1, true, 2)" />
+				<canvas class="hidden dirt" id="dirt4" style="border:1px solid #000000;" onclick="mine(1, true, 3)">Canvas</canvas>
+				<input class="hidden gem" type="image" src="Images/TempGem.png" id="gem4" onclick="mine(1, true, 3)" />
+				<canvas class="dirt" id="buy2" style="border:1px solid #000000;" value=2 onclick="buyPlot(2)">Canvas</canvas>
+				<canvas class="dirt" id="buy3" style="border:1px solid #000000;" value=3 onclick="buyPlot(3)">Canvas</canvas>
+				<canvas class="dirt" id="buy4" style="border:1px solid #000000;" value=4 onclick="buyPlot(4)">Canvas</canvas>
+			</div>	
+			<br>
+			<div id="buyButtons">
+				Pets<br>
+				<div class="tooltip" id="wormTip">
+					<button class="petButton" id="buyWorm" onclick="buyWorm()">Worms: 
+					<span id="numWorms"></span><br>
+					<span id="wormCost">3 Gems to Unlock</span>
+					<span class="tooltiptext" id="wormTipText">Worms are useful for collecting dirt, and also oxegenating the soil so that gems come to the surface.</span>
+					</button>
+				</div>
+				<br>
+				<div class="tooltip" id="crusherTip">
+					<button class="hidden petButton" id="buyCrusher" onclick="buyCrusher()">Crushers: 
+					<span id="numCrushers"></span><br>
+					<span id="crusherCost">10 Gems to Unlock</span>
+					<span class="tooltiptext" id="crusherTipText">Crushers collect stone by grinding rocks into smaller pieces.</span>
+					</button>
+				</div>
+			</div>
+		</div>
+		
+		<div id="craftScreen" class="screen hidden">
+			
+			<div id="craftButtons">
+				<button id="sharpen" onclick="sharpen()">Sharpen Pickaxe<br>
+				Cost: <span id="sharpenCost">5</span> Stone<br>
+				Increase by: <span id="sharpenAmt">1</span>
+				</button>
+			</div>
+		</div>
+		
+		<div id="gameLog" class="log">
+			<p id="log" class="logP">It's strange to consider that you now own this plot of land on Cyaegha.
+			What was your late Uncle thinking when he entrusted it to you? Did he realize he was 
+			saving your life from those hellish slave pits on Hastur? The Gem Fields here are 
+			known to be a fortune in waiting for those willing to toil away at them. You suppose 
+			you'd better start mining...<br></p>
+		</div>
+		
+		<div id="battleScreen" class="screen hidden">
+			<input class="hidden enemy" type="image" src="Images/Goblin1.png" id="enemy1"/>
+			<input class="hidden enemy" type="image" src="Images/Goblin1.png" id="enemy2"/>
+			<input class="hidden enemy" type="image" src="Images/Goblin1.png" id="enemy3"/>
+			<input class="hidden enemy" type="image" src="Images/Goblin1.png" id="enemy4"/>
+			<button id="startBattle" onclick="battle()">Start Battle!
+			</button>
+			<button id="attackButton" class="hidden" onclick="performAttack()">Attack
+			</button>
+			<button id="autoFight" class="hidden" onclick="autoFight()">Autofight: 
+			<span id="autoFightActive">OFF</span>
+			</button>
+		</div>
+		
+		<div id="battleLog" class="log hidden">
+			<p id="bLog" class="logP">Battle Log: <br>
+			</p>
+		</div>
+		
+		<div id="shopScreen" class="screen hidden">
+			<div id="shopButtons">
+				<button id="buyPick" onclick="buy(0)">Pick: 50 gems</button><br>
+				<button id="buyHat" onclick="buy(1)">Hat: 10 gems</button><br>
+				<button id="buyAxe" onclick="buy(2)">Axe: 25 gems</button><br>
+				<button id="buyAutoFight" onclick="buy(3)">Auto Fight: 500 gems</button><br>
+			</div>
+		</div>
+		
+		<div id="shopLog" class="log hidden">
+			<p id="sLog" class="logP">Shop: <br><br>
+			</p>
+		</div>
+		
+		<div id="forestScreen" class="screen hidden">
+		
+		</div>
+		
+		<div id="settingsScreen" class="screen hidden">
+		
+		</div>
+		
+		<div id="achievementsScreen" class="screen hidden">
+			<br><br><br><br><center>Coming Soon<sup>TM</sup></center>
+		</div>
+		
+		<div id="bottom">
+			<button id="save" onclick="saveGame()">Save Game</button>
+			<button id="load" onclick="loadGame()">Load Game</button>
+			<button id="delete" onclick="deleteSave()">Delete Save</button>
+			<button id="pause" onclick="pauseGame()">Pause Game</button>
+			<button id="settings" onclick="goSettings()">Settings</button>
+			<button id="achievements" onclick="goAchievements()">Achievements</button>
+		</div>
+	</body>
+</html>
